@@ -1,0 +1,76 @@
+# needed for initramfs creation
++cpio
+
+-ubuntu-minimal
+# packages from ubuntu-minimal minus a few
+adduser
+apt
+apt-utils
+console-setup
+debconf
+debconf-i18n
+dhcpcd-base
+e2fsprogs
+eject
+init
+iproute2
+iputils-ping
+kbd
+kmod
+less
+locales
+lsb-release
+mawk
+mount
+netbase
+netcat-openbsd
+netplan.io
+passwd
+procps
+#python3
+sensible-utils
+sudo
+tzdata
+ubuntu-keyring
+-python3
+-ubuntu-pro-client
+udev
+-vim-tiny
+whiptail
+
+# not useful yet
+#+bcachefs-tools
++btrfs-progs
++cryptsetup
++dosfstools
++eject
++ethtool
++exfatprogs
++fdisk
+# pulls in gcc
+#+fwts
++fwupd
+# provides fwupd libgpgme11 dependency
++libgpgme11t64
++linux-tools-generic
+# pulls in python3-apt
+#+grub2
++hdparm
++lvm2
++memtester
++mtr-tiny
++msr-tools
++nano
++ntfs-3g
++nvme-cli
++pciutils
++rsync
++screen
++smartmontools
++ssh
++stress-ng
++sysstat
++tmux
++usbutils
++wget
++xfsprogs
