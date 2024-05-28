@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' "$DEBIRF_ROOT"/etc/ssh/sshd_config
+cat <<EOF >>"$DEBIRF_ROOT"/etc/security/limits.conf
+*               soft    nofile          1048576
+*               hard    nofile          1048576
+EOF
+sed -i 's|root::|root:$6$pjx0s2.kC66I84zr$MIhEqNfhxmPMI4Pkh3DkpkAKsMUDgY9vYTPyxAQY6oBc.1gAie2ALZ3gMIknXazPjLjsDjlk.iDwhFrDSs/hD0:|g' "$DEBIRF_ROOT"/etc/passwd
