@@ -232,7 +232,8 @@ EOF
     pack_rootfs "$NEST_ROOT"/rootfs.cpio
 
     msg "creating wrapper cpio..."
-    fakeroot_if_needed sh -c "cd $NEST_ROOT && find * | cpio --create -H newc" | zstd --ultra -22 -T0 --long > "$INITRD"
+    # running in chroot, so -T0 ineffective; to prevent overscheduling, use -T1
+    fakeroot_if_needed sh -c "cd $NEST_ROOT && find * | cpio --create -H newc" | zstd --ultra -22 -T1 --long > "$INITRD"
 }
 
 # determine what the host system distro is, and set debirf build defaults

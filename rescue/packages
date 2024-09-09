@@ -38,6 +38,7 @@ udev
 -vim-tiny
 whiptail
 
++acpica-tools
 # not useful yet
 #+bcachefs-tools
 +btrfs-progs
@@ -62,6 +63,7 @@ whiptail
 +msr-tools
 +nano
 +ntfs-3g
++numactl
 +nvme-cli
 +pciutils
 +rsync

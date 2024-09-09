@@ -1,8 +1,15 @@
-#!/bin/sh -e
+#!/bin/bash
+
+set -x
 
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' "$DEBIRF_ROOT"/etc/ssh/sshd_config
 cat <<EOF >>"$DEBIRF_ROOT"/etc/security/limits.conf
 *               soft    nofile          1048576
 *               hard    nofile          1048576
 EOF
-sed -i 's|root::|root:$6$pjx0s2.kC66I84zr$MIhEqNfhxmPMI4Pkh3DkpkAKsMUDgY9vYTPyxAQY6oBc.1gAie2ALZ3gMIknXazPjLjsDjlk.iDwhFrDSs/hD0:|g' "$DEBIRF_ROOT"/etc/passwd
+sed -i 's|root::|root:$y$j9T$XF23oWtmkckwC7NPdlsqm.$C1eRfnVk4XmDntD/izIPOucfOmGOwkxZu2QX78SPykA:|g' "$DEBIRF_ROOT"/etc/shadow
+sed -i 's|..\.archive\.|fr.archive.|g' "$DEBIRF_ROOT"/etc/apt/sources.list.d/*
+echo "TMOUT=25200" >>"$DEBIRF_ROOT"/etc/environment
+echo 'Acquire::http::Proxy "http://193.56.47.20:8080";' >"$DEBIRF_ROOT"/etc/apt/apt.conf.d/proxy
+
+debirf_exec systemctl enable systemd-networkd
