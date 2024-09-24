@@ -8,7 +8,32 @@ cat <<EOF >>"$DEBIRF_ROOT"/etc/security/limits.conf
 *               hard    nofile          1048576
 EOF
 sed -i 's|root::|root:$y$j9T$XF23oWtmkckwC7NPdlsqm.$C1eRfnVk4XmDntD/izIPOucfOmGOwkxZu2QX78SPykA:|g' "$DEBIRF_ROOT"/etc/shadow
-sed -i 's|..\.archive\.|fr.archive.|g' "$DEBIRF_ROOT"/etc/apt/sources.list.d/*
+
+# cleanup sources
+rm -f "$DEBIRF_ROOT"/etc/apt/sources.list "$DEBIRF_ROOT"/etc/apt/sources.list.d/*
+
+cat >>"$DEBIRF_ROOT"/etc/apt/sources.list.d/ubuntu.sources <<EOF
+Types: deb
+URIs: http://fr.archive.ubuntu.com/ubuntu/
+Suites: noble noble-updates noble-backports
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+Types: deb
+URIs: http://security.ubuntu.com/ubuntu/
+Suites: noble-security
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+EOF
+
+cat >>"$DEBIRF_ROOT"/etc/apt/sources.list.d/ubuntu-src.sources <<EOF
+Types: deb-src
+URIs: http://fr.archive.ubuntu.com/ubuntu/
+Suites: noble noble-updates noble-backports
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+EOF
+
 echo "TMOUT=25200" >>"$DEBIRF_ROOT"/etc/environment
 echo 'Acquire::http::Proxy "http://193.56.47.20:8080";' >"$DEBIRF_ROOT"/etc/apt/apt.conf.d/proxy
 
