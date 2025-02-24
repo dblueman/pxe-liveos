@@ -25,6 +25,7 @@ mount
 netbase
 netcat-openbsd
 netplan.io
+nfs-common
 passwd
 procps
 #python3

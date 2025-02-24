@@ -42,7 +42,7 @@ CUDA_PATH=/usr/lib/nvidia-cuda-toolkit
 EOF
 
 cat <<EOF >"$DEBIRF_ROOT"/etc/motd
-Welcome to Eviden RescueOS
+Welcome to RescueOS
 EOF
 
 echo 'Acquire::http::Proxy "http://193.56.47.20:8080";' >"$DEBIRF_ROOT"/etc/apt/apt.conf.d/proxy
