@@ -1,6 +1,10 @@
-#!/bin/bash -ex
+#!/bin/bash
 
-# mkdir -p rescue/root/lib/modules
-rm -f rescue/vmlinuz-* rescue/*.cpio.zst
-sudo rm -rf rescue/root && mkdir -p rescue/root && echo "force-unsafe-io" >rescue/root/.dpkg.cfg && sudo ./debirf make -o -r rescue
-sudo chmod a+r rescue/vmlinuz-* rescue/*.cpio.zst
+set -exo pipefail
+
+[ -x /usr/sbin/debootstrap ] || sudo apt install debootstrap
+
+# mkdir -p liveos/root/lib/modules
+rm -f liveos/vmlinuz-* liveos/*.cpio.zst
+sudo rm -rf liveos/root && mkdir -p liveos/root && echo "force-unsafe-io" >liveos/root/.dpkg.cfg && sudo DEBIRF_COMMON=debirf/common DEBIRF_DEFAULT_PACKAGES=debirf/packages debirf/debirf make -o -r liveos
+sudo chmod a+r liveos/vmlinuz-* liveos/*.cpio.zst
