@@ -11,7 +11,6 @@ debconf
 debconf-i18n
 dhcpcd-base
 e2fsprogs
-efibootmgr
 eject
 init
 iproute2
@@ -26,7 +25,6 @@ mount
 netbase
 netcat-openbsd
 netplan.io
-nfs-common
 passwd
 procps
 #python3
@@ -46,6 +44,7 @@ whiptail
 +btrfs-progs
 +cryptsetup
 +dosfstools
++efibootmgr
 +eject
 +ethtool
 +exfatprogs
@@ -64,6 +63,7 @@ whiptail
 +mtr-tiny
 +msr-tools
 +nano
++nfs-common
 +ntfs-3g
 +numactl
 +nvme-cli
