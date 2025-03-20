@@ -42,9 +42,14 @@ CUDA_PATH=/usr/lib/nvidia-cuda-toolkit
 EOF
 
 cat <<EOF >"$DEBIRF_ROOT"/etc/motd
-Welcome to RescueOS
+Welcome to LiveOS - contact daniel@numascale.com for any adjustments
 EOF
 
 echo 'Acquire::http::Proxy "http://193.56.47.20:8080";' >"$DEBIRF_ROOT"/etc/apt/apt.conf.d/proxy
 
 debirf_exec systemctl enable systemd-networkd
+
+# useful tools
+cp -r bin "$DEBIRF_ROOT"/root/
+
+sed -i 's|^ExecStart=.*|ExecStart=/root/bin/stress.sh|g' "$DEBIRF_ROOT"/usr/lib/systemd/system/rescue.service

@@ -68,6 +68,7 @@ whiptail
 +numactl
 +nvme-cli
 +pciutils
++psmisc
 +rsync
 +screen
 +smartmontools
